@@ -469,6 +469,80 @@
             </div>
           </section>
 
+
+          <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Server Comments</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Server Comments Section -->
+    <section class="server-comments" id="server-comments">
+        <div class="container">
+            <h2 class="server-comments-title">Leave a Comment</h2>
+            <p class="server-comments-description">Share your thoughts about our Minecraft server with the community!</p>
+            
+            <!-- Comment Form -->
+            <div class="comment-form">
+                <form id="commentForm">
+                    <input type="text" class="input-field" id="username" placeholder="Your Name" required>
+                    <textarea class="input-field" id="commentText" placeholder="Your Comment" rows="4" required></textarea>
+                    <button type="submit" class="submit-button">Submit Comment</button>
+                </form>
+            </div>
+
+            <!-- Comments List -->
+            <div class="comments-list" id="commentsList">
+                <!-- Example static comments -->
+                <div class="comment">
+                    <p class="comment-author">Alex</p>
+                    <p class="comment-text">This server is amazing! The community is super friendly and the gameplay is top-notch.</p>
+                    <p class="comment-date">Posted on: August 30, 2024</p>
+                </div>
+                <div class="comment">
+                    <p class="comment-author">Jamie</p>
+                    <p class="comment-text">I've been playing here for over a year, and it's been a fantastic experience. Highly recommend!</p>
+                    <p class="comment-date">Posted on: August 28, 2024</p>
+                </div>
+                <!-- Dynamic comments will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript to Handle Form Submission and Display Comments -->
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting traditionally
+
+            // Get input values
+            const username = document.getElementById('username').value;
+            const commentText = document.getElementById('commentText').value;
+
+            // Create a new comment element
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.innerHTML = `
+                <p class="comment-author">${username}</p>
+                <p class="comment-text">${commentText}</p>
+                <p class="comment-date">Posted on: ${new Date().toLocaleDateString()}</p>
+            `;
+
+            // Append the new comment to the comments list
+            document.getElementById('commentsList').appendChild(newComment);
+
+            // Clear the form
+            document.getElementById('commentForm').reset();
+        });
+    </script>
+
+</body>
+</html>
+
+
         </body>
 
         </html>
