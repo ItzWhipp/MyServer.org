@@ -480,6 +480,16 @@
 </head>
 <body>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Server Comments</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
     <!-- Server Comments Section -->
     <section class="server-comments" id="server-comments">
         <div class="container">
@@ -499,15 +509,23 @@
             <div class="comments-list" id="commentsList">
                 <!-- Example static comments -->
                 <div class="comment">
+                    <p class="comment-author">Alex</p>
+                    <p class="comment-text">This server is amazing! The community is super friendly and the gameplay is top-notch.</p>
+                    <p class="comment-date">Posted on: August 30, 2024</p>
+                    <button class="delete-button">Delete</button>
                 </div>
                 <div class="comment">
+                    <p class="comment-author">Jamie</p>
+                    <p class="comment-text">I've been playing here for over a year, and it's been a fantastic experience. Highly recommend!</p>
+                    <p class="comment-date">Posted on: August 28, 2024</p>
+                    <button class="delete-button">Delete</button>
                 </div>
                 <!-- Dynamic comments will appear here -->
             </div>
         </div>
     </section>
 
-    <!-- JavaScript to Handle Form Submission and Display Comments -->
+    <!-- JavaScript to Handle Form Submission, Display, and Deletion of Comments -->
     <script>
         document.getElementById('commentForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting traditionally
@@ -523,13 +541,32 @@
                 <p class="comment-author">${username}</p>
                 <p class="comment-text">${commentText}</p>
                 <p class="comment-date">Posted on: ${new Date().toLocaleDateString()}</p>
+                <button class="delete-button">Delete</button>
             `;
 
             // Append the new comment to the comments list
             document.getElementById('commentsList').appendChild(newComment);
 
+            // Add event listener for delete button on the new comment
+            newComment.querySelector('.delete-button').addEventListener('click', function() {
+                newComment.remove();
+            });
+
             // Clear the form
             document.getElementById('commentForm').reset();
+        });
+
+        // Attach event listeners to existing delete buttons
+        document.querySelectorAll('.delete-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                button.parentElement.remove();
+            });
+        });
+    </script>
+
+</body>
+</html>
+
         });
     </script>
 
